@@ -1,7 +1,8 @@
 import pygame
 from pygame locals import *
 
-fenêtre = 
+windows = 
 fond =
 MacGyver =
 Gardien =
+counter =
