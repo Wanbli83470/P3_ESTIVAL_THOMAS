@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
 import pygame
 from pygame.locals import *
 import random
@@ -169,6 +171,7 @@ windows.blit(fond, (0,0))
 MacGyver = pygame.image.load("MacGyver50PX.png").convert_alpha()
 position_perso = MacGyver.get_rect()
 windows.blit(MacGyver, position_perso)
+position_perso.y = (50)
 #loading Gardien
 Gardien = pygame.image.load("Gardien50PX.png").convert_alpha()
 windows.blit(Gardien, (712,555))
@@ -237,20 +240,29 @@ while continuer:
     position_precise = (position_perso[0:2])
 
     if position_precise == recup2:
-    	print("detection")
-    	counter = counter + 1
+    	if counter < 1 :
+    		counter = counter + 1
+    	else : print("recuperer") 
     	# del ether fais planter le jeu
-    	print(counter)
-    elif position_precise == recup3:
+    elif position_precise == recup3 :
     	print("detection")
-    	counter = counter + 1
+    	if counter < 2 :
+    		counter = counter + 1
+    	else : print("objets recuperer") 
     	# del ether fais planter le jeu
     	print(counter)
     elif position_precise == recup4:
-    	print("detection")
-    	counter = counter + 1
+    	if counter < 3 :
+    		counter = counter + 1
+    	else : print("objets recuperer") 
     	# del ether fais planter le jeu
     	print(counter)
+    if counter == 3 :
+    	print("objets tous recuperes")
+
     else:
-    	print("pas de detection")
+    	print("pas de détéction")
     
+    if counter == 3 :
+    	pass
+    	#del Gardien
