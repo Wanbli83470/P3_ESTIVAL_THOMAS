@@ -244,6 +244,7 @@ while continuer:
 
     position_precise = (position_perso[0:2])
     print(position_precise)
+    print(counter)
     if position_precise == recup2:
         recup2 = (750,750)
     	if counter < 1 :
@@ -265,9 +266,10 @@ while continuer:
     	else : print("objets recuperer") 
     	# del ether fais planter le jeu
     	print(counter)
-    elif position_precise == [700,550]:
+    elif position_precise == [700,550] and counter == 3:
         print("fin du jeu")
         continuer = 0
+    else : print("tout les objets ne sont pas rammasses")
 
     if counter == 3 :
     	print("objets tous recuperes")
