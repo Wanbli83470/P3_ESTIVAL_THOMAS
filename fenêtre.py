@@ -153,10 +153,11 @@ position = {'a2':[0,50],
 recup2 = position.get(random.choice(position.keys()))
 recup3 = position.get(random.choice(position.keys()))
 recup4 = position.get(random.choice(position.keys()))
+recup5 = position.get(random.choice(position.keys()))
 print(recup2)
 print(recup3)
 print(recup4)
-
+print(recup5)
 pygame.init()
 #couleur
 WHITE = (255,255,255)
@@ -167,6 +168,10 @@ BLACK = (0,0,0)
 
 #compteur
 counter = 0
+# coordonnées case_dangers
+C7=[100,300]
+C14=[100,650]
+L6=[550,250]
 #vie
 vie = 11
 #Opening PyGame windows
@@ -193,19 +198,22 @@ windows.blit(seringue, (recup3))
 #loading aiguille
 aiguille = pygame.image.load("aiguille.png").convert_alpha()
 windows.blit(aiguille, (recup4))
+#loading boussole
+boussole = pygame.image.load("boussole.png").convert_alpha()
+windows.blit(boussole, (recup5))
 #loading Game over
 over = pygame.image.load("game_over.png").convert_alpha()
 windows.blit(over, (0,0))
 position_over = (750,750)
 #case_danger
 case_danger = pygame.image.load("case_danger.png").convert_alpha()
-windows.blit(case_danger, (100,300))
+windows.blit(case_danger, (C7))
 #case_danger2
 case_danger2 = pygame.image.load("case_danger.png").convert_alpha()
-windows.blit(case_danger2, (100,650))
+windows.blit(case_danger2, (C14))
 #case_danger3
 case_danger3 = pygame.image.load("case_danger.png").convert_alpha()
-windows.blit(case_danger3, (550,250))
+windows.blit(case_danger3, (L6))
 # objets ramasses
 font=pygame.font.Font(None,50)
 text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
@@ -250,16 +258,17 @@ while continuer:
     #Re-collage
     windows.blit(fond, (0,0))   
     windows.blit(MacGyver, position_perso)
-    windows.blit(Gardien, (712,555))
+    windows.blit(Gardien, (700,550))
     windows.blit(ether, (recup2))
     windows.blit(seringue, (recup3))
     windows.blit(text,(20,715))
     windows.blit(aiguille, (recup4))
+    windows.blit(boussole, (recup5))
     windows.blit(defaite,(position_texte))
     windows.blit(over, (position_over))
-    windows.blit(case_danger, (100,300))
-    windows.blit(case_danger2, (100,650))
-    windows.blit(case_danger3, (550,250))
+    windows.blit(case_danger, (C7))
+    windows.blit(case_danger2, (C14))
+    windows.blit(case_danger3, (L6))
         #refresh
     pygame.display.flip()
     #print(position_perso)
@@ -267,6 +276,7 @@ while continuer:
     position_precise = (position_perso[0:2])
     print(position_precise)
     print(counter)
+    print(vie)
     if position_precise == recup2:
         recup2 = (750,750)
     	counter += 1
@@ -284,20 +294,31 @@ while continuer:
         counter += 1
         text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
         rect_text = text.get_rect()
+    elif position_precise == recup5 :
+        print("detection")
+        recup5 = (750,750)
+        counter += 1
+        text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
+        rect_text = text.get_rect()
 
     	print(counter)
-    elif position_precise == [700,550] and counter == 3:
+    elif position_precise == [700,550] and counter == 4:
         print("fin du jeu")
         continuer = 0
-    elif position_precise == [700,550] and counter < 3:
+    elif position_precise == [700,550] and counter < 4:
         print("perdu")
         defaite=font.render("GAME OVER",True,(255,0,0))
         rect_text = defaite.get_rect().center
         position_over = (0,0)
-
-    elif position_precise == [100,300]:
-        vie = vie -1
-
+    elif position_precise == C7:
+        vie = vie -4
+        C7=[750,750]
+    elif position_precise == C14:
+        vie = vie -4
+        C14=[750,750]
+    elif position_precise == L6:
+        vie = vie -4
+        L6=[750,750]
     if counter == 3 :
     	print("objets tous recuperes")
 
@@ -306,5 +327,6 @@ while continuer:
         print("tout les objets ne sont pas rammasses")   
     if vie <=0:
         print("perdu")
+        position_over = (0,0)
 
  
