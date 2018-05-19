@@ -218,6 +218,10 @@ windows.blit(case_danger3, (L6))
 font=pygame.font.Font(None,50)
 text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
 rect_text = text.get_rect()
+#compteur point de vie
+points_de_vies = pygame.font.Font(None,50)
+text2=font.render("SANTE : " + str(vie),True,(255,255,255))
+rect_text2 = text2.get_rect()
 #texte defaite
 defaite=font.render("defaite",True,(255,255,255))
 rect_text = defaite.get_rect()
@@ -262,6 +266,7 @@ while continuer:
     windows.blit(ether, (recup2))
     windows.blit(seringue, (recup3))
     windows.blit(text,(20,715))
+    windows.blit(text2,(550,715))
     windows.blit(aiguille, (recup4))
     windows.blit(boussole, (recup5))
     windows.blit(defaite,(position_texte))
@@ -313,12 +318,15 @@ while continuer:
     elif position_precise == C7:
         vie = vie -4
         C7=[750,750]
+        text2=font.render("SANTE : " + str(vie),True,(255,255,255))
     elif position_precise == C14:
         vie = vie -4
         C14=[750,750]
+        text2=font.render("SANTE : " + str(vie),True,(255,255,255))
     elif position_precise == L6:
         vie = vie -4
         L6=[750,750]
+        text2=font.render("SANTE : " + str(vie),True,(255,255,255))
     if counter == 3 :
     	print("objets tous recuperes")
 
