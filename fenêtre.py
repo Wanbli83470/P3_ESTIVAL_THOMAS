@@ -167,6 +167,8 @@ BLACK = (0,0,0)
 
 #compteur
 counter = 0
+#vie
+vie = 11
 #Opening PyGame windows
 windows = pygame.display.set_mode((750, 750))
 #name windows
@@ -192,13 +194,16 @@ windows.blit(seringue, (recup3))
 aiguille = pygame.image.load("aiguille.png").convert_alpha()
 windows.blit(aiguille, (recup4))
 
-
+# objets ramasses
 font=pygame.font.Font(None,50)
 text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
 rect_text = text.get_rect()
-
+#texte defaite
+defaite=font.render("defaite",True,(255,255,255))
+rect_text = defaite.get_rect()
+position_texte = (750,750)
 windows.blit(text,(20,715))
-
+windows.blit(defaite,(750,750))
 pygame.display.flip()
 
 continuer = 1
@@ -238,6 +243,7 @@ while continuer:
     windows.blit(seringue, (recup3))
     windows.blit(text,(20,715))
     windows.blit(aiguille, (recup4))
+    windows.blit(defaite,(position_texte))
         #refresh
     pygame.display.flip()
     #print(position_perso)
@@ -267,7 +273,11 @@ while continuer:
     elif position_precise == [700,550] and counter == 3:
         print("fin du jeu")
         continuer = 0
-
+    elif position_precise == [700,550] and counter < 3:
+        print("perdu")
+        defaite=font.render("GAME OVER",True,(255,0,0))
+        rect_text = defaite.get_rect().center
+        position_texte = (300,300)
 
     if counter == 3 :
     	print("objets tous recuperes")
@@ -275,7 +285,7 @@ while continuer:
     else:
     	print("pas de détéction")
         print("tout les objets ne sont pas rammasses")   
-    if counter == 3 :
-    	pass
-    	#del Gardien
+    if vie <=0:
+        print("perdu")
 
+ 
