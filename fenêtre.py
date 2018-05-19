@@ -219,9 +219,6 @@ while continuer:
                 counter = counter - 1
                 print(counter)
 
-            
-
-                    
 
 
 
@@ -240,20 +237,24 @@ while continuer:
     position_precise = (position_perso[0:2])
 
     if position_precise == recup2:
+        recup2 = (750,750)
     	if counter < 1 :
-    		counter = counter + 1
+    		counter += 1
+
     	else : print("recuperer") 
     	# del ether fais planter le jeu
     elif position_precise == recup3 :
     	print("detection")
+        recup3 = (750,750)
     	if counter < 2 :
-    		counter = counter + 1
+    		counter += 1
     	else : print("objets recuperer") 
     	# del ether fais planter le jeu
     	print(counter)
     elif position_precise == recup4:
+        recup4 = (750,750)
     	if counter < 3 :
-    		counter = counter + 1
+    		counter += 1
     	else : print("objets recuperer") 
     	# del ether fais planter le jeu
     	print(counter)
