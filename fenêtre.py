@@ -193,7 +193,11 @@ windows.blit(seringue, (recup3))
 #loading aiguille
 aiguille = pygame.image.load("aiguille.png").convert_alpha()
 windows.blit(aiguille, (recup4))
-
+#loading Game over
+over = pygame.image.load("game_over.png").convert_alpha()
+windows.blit(over, (0,0))
+position_over = (750,750)
+#case_danger
 # objets ramasses
 font=pygame.font.Font(None,50)
 text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
@@ -244,6 +248,7 @@ while continuer:
     windows.blit(text,(20,715))
     windows.blit(aiguille, (recup4))
     windows.blit(defaite,(position_texte))
+    windows.blit(over, (position_over))
         #refresh
     pygame.display.flip()
     #print(position_perso)
@@ -277,7 +282,7 @@ while continuer:
         print("perdu")
         defaite=font.render("GAME OVER",True,(255,0,0))
         rect_text = defaite.get_rect().center
-        position_texte = (300,300)
+        position_over = (0,0)
 
     if counter == 3 :
     	print("objets tous recuperes")
