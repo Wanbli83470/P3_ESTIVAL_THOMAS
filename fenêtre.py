@@ -149,6 +149,142 @@ position = {'a2':[0,50],
             "p9":[700,400],
             "p12":[700,550],
             }
+liste_auto = [[0,0],
+            [0,50],
+            [0,150],
+            [0,400],
+            [0,400],
+            [0,550],
+            [0,550],
+            [0,650],
+            [0,700],
+            [50,50],
+            [50,150],
+            [50,200],
+            [50,350],
+            [50,400],
+            [50,450],
+            [50,500],
+            [50,600],
+            [50,650],
+            [100,50],
+            [100,150],
+            [100,300],
+            [100,350],
+            [100,400],
+            [100,500],
+            [100,550],
+            [100,600],
+            [100,650],
+            [150,0],
+            [150,50],
+            [150,100],
+            [150,150],
+            [150,250],
+            [150,300],
+            [150,350],
+            [150,450],
+            [150,550],
+            [150,650],
+            [200,150],
+            [200,250],
+            [200,650],
+            [250,0],
+            [250,50],
+            [250,150],
+            [250,350],
+            [250,400],
+            [250,500],
+            [250,550],
+            [250,600],
+            [250,650],
+            [300,0],
+            [300,50],
+            [300,150],
+            [300,250],
+            [300,400],
+            [300,650],
+            [350,0],
+            [350,50],
+            [350,150],
+            [350,250],
+            [350,350],
+            [350,400],
+            [350,450],
+            [350,500],
+            [350,550],
+            [350,650],
+            [400,0],
+            [400,50],
+            [400,150],
+            [400,250],
+            [400,350],
+            [400,550],
+            [400,600],
+            [400,650],
+            [400,700],
+            [450,0],
+            [450,50],
+            [450,100],
+            [450,150],
+            [450,200],
+            [450,250],
+            [450,350],
+            [450,400],
+            [450,450],
+            [450,500],
+            [450,700],
+            [500,0],
+            [500,250],
+            [500,300],
+            [500,550],
+            [500,600],
+            [500,700],
+            [550,0],
+            [550,100],
+            [550,150],
+            [550,200],
+            [550,250],
+            [550,300],
+            [550,400],
+            [550,550],
+            [600,0],
+            [600,100],
+            [600,150],
+            [600,200],
+            [600,250],
+            [600,300],
+            [600,400],
+            [600,550],
+            [600,600],
+            [600,650],
+            [650,0],
+            [650,100],
+            [650,150],
+            [650,200],
+            [650,250],
+            [650,300],
+            [650,350],
+            [650,400],
+            [650,550],
+            [700,0],
+            [700,400],
+            [700,450],
+            [700,500],
+            [700,550],
+            [700,600],
+            [700,650],
+            [700,0],
+            [700,50],
+            [700,100],
+            [700,150],
+            [700,200],
+            [700,250],
+            [700,300],
+            [700,350],
+            [700,400],
+            [700,550]],
+            
 
 recup2 = position.get(random.choice(position.keys()))
 recup3 = position.get(random.choice(position.keys()))
@@ -205,6 +341,10 @@ windows.blit(boussole, (recup5))
 over = pygame.image.load("game_over.png").convert_alpha()
 windows.blit(over, (0,0))
 position_over = (750,750)
+#loading WIN
+win = pygame.image.load("you_win.png").convert_alpha()
+windows.blit(win, (0,0))
+position_win = (750,750)
 #case_danger
 case_danger = pygame.image.load("case_danger.png").convert_alpha()
 windows.blit(case_danger, (C7))
@@ -243,19 +383,20 @@ while continuer:
             continuer = 0
 
         if event.type == KEYDOWN:
-            if event.key == K_LEFT:
-                position_perso = position_perso.move(-50,0)
-            elif event.key == K_RIGHT:
-                position_perso = position_perso.move(50,0)
-            elif event.key == K_UP:
-                position_perso = position_perso.move(0,-50)
-            elif event.key == K_DOWN:
-                position_perso = position_perso.move(0,50)
-            if event.key == K_SPACE:
-                print("BRAVO")
-                counter = counter - 1
-                print(counter)
-
+            if position_perso.move != liste_auto:
+                if event.key == K_LEFT:
+                    position_perso = position_perso.move(-50,0)
+                elif event.key == K_RIGHT:
+                    position_perso = position_perso.move(50,0)
+                elif event.key == K_UP:
+                    position_perso = position_perso.move(0,-50)
+                elif event.key == K_DOWN:
+                    position_perso = position_perso.move(0,50)
+                if event.key == K_SPACE:
+                    print("BRAVO")
+                    counter = counter - 1
+                    print(counter)
+            else : pass
 
 
 
@@ -271,6 +412,7 @@ while continuer:
     windows.blit(boussole, (recup5))
     windows.blit(defaite,(position_texte))
     windows.blit(over, (position_over))
+    windows.blit(win, (position_win))
     windows.blit(case_danger, (C7))
     windows.blit(case_danger2, (C14))
     windows.blit(case_danger3, (L6))
@@ -309,7 +451,7 @@ while continuer:
     	print(counter)
     elif position_precise == [700,550] and counter == 4:
         print("fin du jeu")
-        continuer = 0
+        position_win = (0,0)
     elif position_precise == [700,550] and counter < 4:
         print("perdu")
         defaite=font.render("GAME OVER",True,(255,0,0))
@@ -329,7 +471,6 @@ while continuer:
         text2=font.render("SANTE : " + str(vie),True,(255,255,255))
     if counter == 3 :
     	print("objets tous recuperes")
-
     else:
     	print("pas de détéction")
         print("tout les objets ne sont pas rammasses")   
