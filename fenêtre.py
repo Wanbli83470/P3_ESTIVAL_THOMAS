@@ -158,6 +158,13 @@ print(recup3)
 print(recup4)
 
 pygame.init()
+#couleur
+WHITE = (255,255,255)
+BLUE = (0,0,255)
+GREEN = (0,255,0)
+RED = (255,0,0)
+BLACK = (0,0,0)
+
 #compteur
 counter = 0
 #Opening PyGame windows
@@ -184,6 +191,7 @@ windows.blit(seringue, (recup3))
 #loading aiguille
 aiguille = pygame.image.load("aiguille.png").convert_alpha()
 windows.blit(aiguille, (recup4))
+
 
 chaine="Objets rammasses : " + str(counter)
 font=pygame.font.SysFont("broadway",35,bold=False,italic=False)
@@ -230,17 +238,16 @@ while continuer:
     windows.blit(seringue, (recup3))
     windows.blit(text,(20,715))
     windows.blit(aiguille, (recup4))
-    #refresh
+        #refresh
     pygame.display.flip()
     #print(position_perso)
 
     position_precise = (position_perso[0:2])
-
+    print(position_precise)
     if position_precise == recup2:
         recup2 = (750,750)
     	if counter < 1 :
     		counter += 1
-
     	else : print("recuperer") 
     	# del ether fais planter le jeu
     elif position_precise == recup3 :
@@ -258,6 +265,10 @@ while continuer:
     	else : print("objets recuperer") 
     	# del ether fais planter le jeu
     	print(counter)
+    elif position_precise == [700,550]:
+        print("fin du jeu")
+        continuer = 0
+
     if counter == 3 :
     	print("objets tous recuperes")
 
@@ -267,3 +278,4 @@ while continuer:
     if counter == 3 :
     	pass
     	#del Gardien
+
