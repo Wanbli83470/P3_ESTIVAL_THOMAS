@@ -198,6 +198,14 @@ over = pygame.image.load("game_over.png").convert_alpha()
 windows.blit(over, (0,0))
 position_over = (750,750)
 #case_danger
+case_danger = pygame.image.load("case_danger.png").convert_alpha()
+windows.blit(case_danger, (100,300))
+#case_danger2
+case_danger2 = pygame.image.load("case_danger.png").convert_alpha()
+windows.blit(case_danger2, (100,650))
+#case_danger3
+case_danger3 = pygame.image.load("case_danger.png").convert_alpha()
+windows.blit(case_danger3, (550,250))
 # objets ramasses
 font=pygame.font.Font(None,50)
 text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
@@ -249,6 +257,9 @@ while continuer:
     windows.blit(aiguille, (recup4))
     windows.blit(defaite,(position_texte))
     windows.blit(over, (position_over))
+    windows.blit(case_danger, (100,300))
+    windows.blit(case_danger2, (100,650))
+    windows.blit(case_danger3, (550,250))
         #refresh
     pygame.display.flip()
     #print(position_perso)
@@ -283,6 +294,9 @@ while continuer:
         defaite=font.render("GAME OVER",True,(255,0,0))
         rect_text = defaite.get_rect().center
         position_over = (0,0)
+
+    elif position_precise == [100,300]:
+        vie = vie -1
 
     if counter == 3 :
     	print("objets tous recuperes")
