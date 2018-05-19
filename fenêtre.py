@@ -193,13 +193,13 @@ aiguille = pygame.image.load("aiguille.png").convert_alpha()
 windows.blit(aiguille, (recup4))
 
 
-chaine="Objets rammasses : " + str(counter)
-font=pygame.font.SysFont("broadway",35,bold=False,italic=False)
-text=font.render(chaine,1,(255,255,255))
+font=pygame.font.Font(None,50)
+text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
+rect_text = text.get_rect()
+
 windows.blit(text,(20,715))
 
 pygame.display.flip()
-
 
 continuer = 1
 
@@ -248,21 +248,26 @@ while continuer:
     if position_precise == recup2:
         recup2 = (750,750)
     	counter += 1
-    	# del ether fais planter le jeu
+        text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
+        rect_text = text.get_rect()
+
     elif position_precise == recup3 :
     	print("detection")
         recup3 = (750,750)
         counter += 1
-    	# del ether fais planter le jeu
-    	print(counter)
+    	text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
+        rect_text = text.get_rect()
     elif position_precise == recup4:
         recup4 = (750,750)
         counter += 1
-    	# del ether fais planter le jeu
+        text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
+        rect_text = text.get_rect()
+
     	print(counter)
     elif position_precise == [700,550] and counter == 3:
         print("fin du jeu")
         continuer = 0
+
 
     if counter == 3 :
     	print("objets tous recuperes")
