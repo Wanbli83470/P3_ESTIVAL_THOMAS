@@ -247,36 +247,29 @@ while continuer:
     print(counter)
     if position_precise == recup2:
         recup2 = (750,750)
-    	if counter < 1 :
-    		counter += 1
-    	else : print("recuperer") 
+    	counter += 1
     	# del ether fais planter le jeu
     elif position_precise == recup3 :
     	print("detection")
         recup3 = (750,750)
-    	if counter < 2 :
-    		counter += 1
-    	else : print("objets recuperer") 
+        counter += 1
     	# del ether fais planter le jeu
     	print(counter)
     elif position_precise == recup4:
         recup4 = (750,750)
-    	if counter < 3 :
-    		counter += 1
-    	else : print("objets recuperer") 
+        counter += 1
     	# del ether fais planter le jeu
     	print(counter)
     elif position_precise == [700,550] and counter == 3:
         print("fin du jeu")
         continuer = 0
-    else : print("tout les objets ne sont pas rammasses")
 
     if counter == 3 :
     	print("objets tous recuperes")
 
     else:
     	print("pas de détéction")
-    
+        print("tout les objets ne sont pas rammasses")   
     if counter == 3 :
     	pass
     	#del Gardien
