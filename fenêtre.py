@@ -263,7 +263,7 @@ liste_auto = [[0,50],
             
 chemin = "n.txt"
 f = open(chemin, 'a')
-f.write("Une ligne de plus")
+
             
 
 recup2 = position.get(random.choice(position.keys()))
@@ -354,7 +354,7 @@ windows.blit(defaite,(750,750))
 pygame.display.flip()
 
 continuer = 1
-pygame.time.Clock().tick(30)
+
 while continuer:
 
  
@@ -425,13 +425,6 @@ while continuer:
     	counter += 1
         text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
         rect_text = text.get_rect()
-
-    elif position_precise == recup3 :
-    	print("detection")
-        recup3 = (750,750)
-        counter += 1
-    	text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
-        rect_text = text.get_rect()
     elif position_precise == recup4:
         recup4 = (750,750)
         counter += 1
@@ -443,9 +436,8 @@ while continuer:
         counter += 1
         text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
         rect_text = text.get_rect()
-
     	print(counter)
-    elif position_precise == [700,550] and counter == 3:
+    elif position_precise == [700,550] and counter >= 3:
         print("fin du jeu")
         position_win = (0,0)
     elif position_precise == [700,550] and counter < 3:
@@ -467,9 +459,6 @@ while continuer:
         text2=font.render("SANTE : " + str(vie),True,(255,255,255))
     elif counter == 3:
         position_seringue=(650,550)
-    elif position_precise==N12:
-        text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
-        position_seringue=(750,750)
     if counter == 3 :
     	print("objets tous recuperes")
     else:
