@@ -1,17 +1,15 @@
-abcdefghijklmno
-
-1 mmmomoooooooooo
-2 oooommmmmomoomo
-3 mmmommmmmomoomo
-4 oooooooooomoomo
-5 mommmmmmmomoomo
-6 
-7 
-8 
-9 
-10
-11
-12
-13
-14
-15 
+mmmomoooooooooo
+oooommmmmomoomo
+mmmommmmmomoomo
+oooooooooomoomo
+mommmmmmmomoomo
+mmmoooooooomomo
+mmmommmmmmooomo
+oooommmooommmmo
+oooomooomomoooo
+mommmmmomommmmm
+oooommmomoommmm
+ommmmomoomooooo
+oooomommommmmmm
+oomoooooommmmmm
+mmmmmmmmooommmm
