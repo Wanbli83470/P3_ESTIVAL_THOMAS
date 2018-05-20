@@ -3,6 +3,7 @@
 import pygame
 from pygame.locals import *
 import random
+from constantes import *
 ether_x = random.randint(0,15)
 ether_x = ether_x * 50
 ether_y = random.randint(0,15)
@@ -288,11 +289,11 @@ L6=[550,250]
 #vie
 vie = 11
 #Opening PyGame windows
-windows = pygame.display.set_mode((750, 750))
+windows = pygame.display.set_mode((size_windows,size_windows))
 #name windows
-pygame.display.set_caption("Aider MacGyver a s'echapper")
+pygame.display.set_caption(titre_fenetre)
 #loading background
-fond = pygame.image.load("fond.jpg")
+fond = pygame.image.load(image_fond)
 windows.blit(fond, (0,0))
 #loading MacGyver
 MacGyver = pygame.image.load("MacGyver50PX.png").convert_alpha()
