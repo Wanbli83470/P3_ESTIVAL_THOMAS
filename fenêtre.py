@@ -261,7 +261,9 @@ liste_auto = [[0,50],
             [700,400],
             [700,550]],
             
-            
+chemin = "n.txt"
+f = open(chemin, 'a')
+f.write("Une ligne de plus")
             
 
 recup2 = position.get(random.choice(position.keys()))
@@ -286,8 +288,11 @@ counter = 0
 C7=[100,300]
 C14=[100,650]
 L6=[550,250]
+N12=[650,550]
 #vie
 vie = 11
+position_seringue=(750,750)
+appartion_seringue=(650,750)
 #Opening PyGame windows
 windows = pygame.display.set_mode((size_windows,size_windows))
 #name windows
@@ -296,41 +301,41 @@ pygame.display.set_caption(titre_fenetre)
 fond = pygame.image.load(image_fond)
 windows.blit(fond, (0,0))
 #loading MacGyver
-MacGyver = pygame.image.load("MacGyver50PX.png").convert_alpha()
+MacGyver = pygame.image.load(image_MacGyver).convert_alpha()
 position_perso = MacGyver.get_rect()
 windows.blit(MacGyver, position_perso)
 position_perso.y = (50)
 #loading Gardien
-Gardien = pygame.image.load("Gardien50PX.png").convert_alpha()
+Gardien = pygame.image.load(image_Gardien).convert_alpha()
 windows.blit(Gardien, (712,555))
 #loading ether
-ether = pygame.image.load("ether.png").convert_alpha()
-windows.blit(ether, (recup2))
+seringue = pygame.image.load(image_seringue).convert_alpha()
+windows.blit(seringue, (position_seringue))
 #loading seringue
-seringue = pygame.image.load("seringue.png").convert_alpha()
-windows.blit(seringue, (recup3))
+ether = pygame.image.load(image_ether).convert_alpha()
+windows.blit(ether, (recup2))
 #loading aiguille
-aiguille = pygame.image.load("aiguille.png").convert_alpha()
+aiguille = pygame.image.load(image_aiguille).convert_alpha()
 windows.blit(aiguille, (recup4))
 #loading boussole
-boussole = pygame.image.load("boussole.png").convert_alpha()
+boussole = pygame.image.load(image_boussole).convert_alpha()
 windows.blit(boussole, (recup5))
 #loading Game over
-over = pygame.image.load("game_over.png").convert_alpha()
+over = pygame.image.load(image_gameover).convert_alpha()
 windows.blit(over, (0,0))
 position_over = (750,750)
 #loading WIN
-win = pygame.image.load("you_win.png").convert_alpha()
+win = pygame.image.load(image_win).convert_alpha()
 windows.blit(win, (0,0))
 position_win = (750,750)
 #case_danger
-case_danger = pygame.image.load("case_danger.png").convert_alpha()
+case_danger = pygame.image.load(image_casedanger).convert_alpha()
 windows.blit(case_danger, (C7))
 #case_danger2
-case_danger2 = pygame.image.load("case_danger.png").convert_alpha()
+case_danger2 = pygame.image.load(image_casedanger).convert_alpha()
 windows.blit(case_danger2, (C14))
 #case_danger3
-case_danger3 = pygame.image.load("case_danger.png").convert_alpha()
+case_danger3 = pygame.image.load(image_casedanger).convert_alpha()
 windows.blit(case_danger3, (L6))
 # objets ramasses
 font=pygame.font.Font(None,50)
@@ -349,7 +354,7 @@ windows.blit(defaite,(750,750))
 pygame.display.flip()
 
 continuer = 1
-
+pygame.time.Clock().tick(30)
 while continuer:
 
  
@@ -359,21 +364,29 @@ while continuer:
             continuer = 0
 
         if event.type == KEYDOWN :
+
             
             if event.key == K_LEFT:
+       
                 if position_x > 0:
                     position_perso = position_perso.move(-50,0)
-                      
+
+                    
+                        
+
+
             elif event.key == K_RIGHT:
+
                 if position_x < 700:
                     position_perso = position_perso.move(50,0)
+                    
             elif event.key == K_UP:
                 if position_y > 0:
                     position_perso = position_perso.move(0,-50)
             elif event.key == K_DOWN:
                 if position_y < 700:
                     position_perso = position_perso.move(0,50)
-            else : pass
+                        
 
 
 
@@ -382,7 +395,7 @@ while continuer:
     windows.blit(MacGyver, position_perso)
     windows.blit(Gardien, (700,550))
     windows.blit(ether, (recup2))
-    windows.blit(seringue, (recup3))
+    windows.blit(seringue, (position_seringue))
     windows.blit(text,(20,715))
     windows.blit(text2,(550,715))
     windows.blit(aiguille, (recup4))
@@ -400,7 +413,12 @@ while continuer:
     position_precise = (position_perso[0:2])
     position_x = position_precise[0]
     position_y = position_precise[1]
-    print(position_x)
+    case_x = [position_precise[0]/50]
+    case_y = [position_precise[1]/50]
+    case_total = str(case_x)+ ";" +str(case_y)
+    print("case x :" + str(case_x))
+    print("case y :" + str(case_y))
+    print(case_total)
     print(position_precise)
     if position_precise == recup2:
         recup2 = (750,750)
@@ -427,10 +445,10 @@ while continuer:
         rect_text = text.get_rect()
 
     	print(counter)
-    elif position_precise == [700,550] and counter == 4:
+    elif position_precise == [700,550] and counter == 3:
         print("fin du jeu")
         position_win = (0,0)
-    elif position_precise == [700,550] and counter < 4:
+    elif position_precise == [700,550] and counter < 3:
         print("perdu")
         defaite=font.render("GAME OVER",True,(255,0,0))
         rect_text = defaite.get_rect().center
@@ -447,6 +465,11 @@ while continuer:
         vie = vie -4
         L6=[750,750]
         text2=font.render("SANTE : " + str(vie),True,(255,255,255))
+    elif counter == 3:
+        position_seringue=(650,550)
+    elif position_precise==N12:
+        text=font.render("objets ramasses : " + str(counter),True,(255,255,255))
+        position_seringue=(750,750)
     if counter == 3 :
     	print("objets tous recuperes")
     else:
@@ -455,5 +478,4 @@ while continuer:
     if vie <=0:
         print("perdu")
         position_over = (0,0)
-
         print (position_perso)
