@@ -149,8 +149,7 @@ position = {'a2':[0,50],
             "p9":[700,400],
             "p12":[700,550],
             }
-liste_auto = [[0,0],
-            [0,50],
+liste_auto = [[0,50],
             [0,150],
             [0,400],
             [0,400],
@@ -285,6 +284,8 @@ liste_auto = [[0,0],
             [700,400],
             [700,550]],
             
+            
+            
 
 recup2 = position.get(random.choice(position.keys()))
 recup3 = position.get(random.choice(position.keys()))
@@ -374,28 +375,26 @@ continuer = 1
 
 while continuer:
 
-    
-
-
+ 
     for event in pygame.event.get():
 
         if event.type == QUIT:
             continuer = 0
 
-        if event.type == KEYDOWN:
-            if position_perso.move != liste_auto:
-                if event.key == K_LEFT:
+        if event.type == KEYDOWN :
+            
+            if event.key == K_LEFT:
+                if position_x > 0:
                     position_perso = position_perso.move(-50,0)
-                elif event.key == K_RIGHT:
+            elif event.key == K_RIGHT:
+                if position_x < 700:
                     position_perso = position_perso.move(50,0)
-                elif event.key == K_UP:
+            elif event.key == K_UP:
+                if position_y > 0:
                     position_perso = position_perso.move(0,-50)
-                elif event.key == K_DOWN:
+            elif event.key == K_DOWN:
+                if position_y < 700:
                     position_perso = position_perso.move(0,50)
-                if event.key == K_SPACE:
-                    print("BRAVO")
-                    counter = counter - 1
-                    print(counter)
             else : pass
 
 
@@ -421,9 +420,9 @@ while continuer:
     #print(position_perso)
 
     position_precise = (position_perso[0:2])
-    print(position_precise)
-    print(counter)
-    print(vie)
+    position_x = position_precise[0]
+    position_y = position_precise[1]
+    print(position_x)
     if position_precise == recup2:
         recup2 = (750,750)
     	counter += 1
@@ -478,4 +477,4 @@ while continuer:
         print("perdu")
         position_over = (0,0)
 
- 
+        print (position_perso)
