@@ -11,5 +11,7 @@ titre_fenetre = "Aider MacGyver a s'echapper"
 
 #Listes des images du jeu
 image_fond = "fond.jpg"
-image_seringue = 
-
+image_seringue = "seringue.png"
+image_MacGyver = "MacGyver50PX.png"
+image_Gardien = "Gardien50PX.png"
+image_gameover = 
