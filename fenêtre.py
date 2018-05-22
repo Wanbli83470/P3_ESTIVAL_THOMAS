@@ -168,6 +168,7 @@ liste_auto = [[0,50],
             [250,0],
             [250,50],
             [250,150],
+            [250,250],
             [250,350],
             [250,400],
             [250,500],
@@ -260,7 +261,8 @@ liste_auto = [[0,50],
             [700,350],
             [700,400],
             [700,550]],
-coordonnees = {"o" : [[0,50],
+coordonnees = [[0,50],
+[0,100],
 [0,150],
 [0,400],
 [0,550],
@@ -369,7 +371,7 @@ coordonnees = {"o" : [[0,50],
 [700,250],
 [700,300],
 [700,350],
-[700,400]]} 
+[700,400]]
 chemin = "n.txt"
 f = open(chemin, 'a')
 
@@ -379,10 +381,7 @@ recup2 = position.get(random.choice(position.keys()))
 recup3 = position.get(random.choice(position.keys()))
 recup4 = position.get(random.choice(position.keys()))
 recup5 = position.get(random.choice(position.keys()))
-print(recup2)
-print(recup3)
-print(recup4)
-print(recup5)
+
 pygame.init()
 #couleur
 WHITE = (255,255,255)
@@ -462,6 +461,15 @@ windows.blit(text,(20,715))
 windows.blit(defaite,(750,750))
 pygame.display.flip()
 
+
+
+
+
+
+
+
+
+
 continuer = 1
 
 while continuer:
@@ -476,21 +484,21 @@ while continuer:
             
             if event.key == K_LEFT:
                 if position_x > 0:
-                    if position_precise == coordonnees["o"]:
+                    if valeur_suivante_gauche in coordonnees:
                         position_perso = position_perso.move(-50,0)
 
             elif event.key == K_RIGHT:
                 if position_x < 700:
-                    if position_precise == coordonnees["o"]:
+                    if valeur_suivante_droite in coordonnees:
                         position_perso = position_perso.move(50,0)
                     
             elif event.key == K_UP:
                 if position_y > 0:
-                    if position_precise == coordonnees["o"]:
+                    if valeur_suivante_haut in coordonnees:
                         position_perso = position_perso.move(0,-50)
             elif event.key == K_DOWN:
                 if position_y < 700:
-                    if position_precise == coordonnees["o"]:
+                    if valeur_suivante_bas in coordonnees:
                         position_perso = position_perso.move(0,50)
     
 
@@ -522,8 +530,6 @@ while continuer:
     case_x = position_precise[0]/50
     case_y = position_precise[1]/50
     tuple_case = [case_x,case_y]
-    print(tuple_case)
-    print(recup2)
 
     #case_total = str(case_x)+ ";" +str(case_y)
     #print("case x :" + str(case_x))
@@ -577,4 +583,22 @@ while continuer:
     if vie <=0:
         print("perdu")
         position_over = (0,0)
-        print (position_perso)
+
+
+
+
+    #collision
+    y50=(position_precise[1]+50)
+    y_moins50=(position_precise[1]-50)
+    y=(position_precise[1])
+
+
+
+    x50=(position_precise[0]+50)
+    x_moins50=(position_precise[0]-50)
+    x=(position_precise[0])
+
+    valeur_suivante_bas = [x,y50]
+    valeur_suivante_haut = [x,y_moins50]
+    valeur_suivante_droite = [x50,y]
+    valeur_suivante_gauche = [x_moins50,y]
