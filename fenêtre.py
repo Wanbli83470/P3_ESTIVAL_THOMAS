@@ -260,7 +260,116 @@ liste_auto = [[0,50],
             [700,350],
             [700,400],
             [700,550]],
-            
+coordonnees = {"o" : [[0,50],
+[0,150],
+[0,400],
+[0,550],
+[0,550],
+[0,650],
+[50,50],
+[50,150],
+[50,200],
+[50,350],
+[50,400],
+[50,450],
+[50,500],
+[50,600],
+[50,650],
+[100,50],
+[100,150],
+[100,350],
+[100,400],
+[100,500],
+[100,600],
+[100,650],
+[150,0],
+[150,50],
+[150,100],
+[150,150],
+[150,250],
+[150,300],
+[150,350],
+[150,400],
+[150,500],
+[150,650],
+[200,150],
+[200,250],
+[200,650],
+[250,0],
+[250,50],
+[250,150],
+[250,400],
+[250,550],
+[250,600],
+[250,650],
+[300,0],
+[300,50],
+[300,150],
+[300,250],
+[300,400],
+[300,650],
+[350,0],
+[350,50],
+[350,150],
+[350,250],
+[350,350],
+[350,400],
+[350,450],
+[350,500],
+[350,550],
+[350,650],
+[400,0],
+[400,50],
+[400,150],
+[400,250],
+[400,350],
+[400,550],
+[400,600],
+[400,650],
+[400,700],
+[450,0],
+[450,50],
+[450,100],
+[450,150],
+[450,200],
+[450,250],
+[450,350],
+[450,400],
+[450,450],
+[450,500],
+[450,700],
+[500,0],
+[500,250],
+[500,300],
+[500,550],
+[500,700],
+[550,0],
+[550,100],
+[550,150],
+[550,300],
+[550,400],
+[550,550],
+[600,0],
+[600,100],
+[600,150],
+[600,200],
+[600,250],
+[600,300],
+[600,400],
+[600,550],
+[650,0],
+[650,400],
+[650,550],
+[700,0],
+[700,0],
+[700,50],
+[700,100],
+[700,150],
+[700,200],
+[700,250],
+[700,300],
+[700,350],
+[700,400]]} 
 chemin = "n.txt"
 f = open(chemin, 'a')
 
@@ -364,29 +473,26 @@ while continuer:
             continuer = 0
 
         if event.type == KEYDOWN :
-
             
             if event.key == K_LEFT:
-       
                 if position_x > 0:
-                    position_perso = position_perso.move(-50,0)
-
-                    
-                        
-
+                    if position_precise == coordonnees["o"]:
+                        position_perso = position_perso.move(-50,0)
 
             elif event.key == K_RIGHT:
-
                 if position_x < 700:
-                    position_perso = position_perso.move(50,0)
+                    if position_precise == coordonnees["o"]:
+                        position_perso = position_perso.move(50,0)
                     
             elif event.key == K_UP:
                 if position_y > 0:
-                    position_perso = position_perso.move(0,-50)
+                    if position_precise == coordonnees["o"]:
+                        position_perso = position_perso.move(0,-50)
             elif event.key == K_DOWN:
                 if position_y < 700:
-                    position_perso = position_perso.move(0,50)
-                        
+                    if position_precise == coordonnees["o"]:
+                        position_perso = position_perso.move(0,50)
+    
 
 
 
@@ -413,12 +519,16 @@ while continuer:
     position_precise = (position_perso[0:2])
     position_x = position_precise[0]
     position_y = position_precise[1]
-    case_x = [position_precise[0]/50]
-    case_y = [position_precise[1]/50]
-    case_total = str(case_x)+ ";" +str(case_y)
-    print("case x :" + str(case_x))
-    print("case y :" + str(case_y))
-    print(case_total)
+    case_x = position_precise[0]/50
+    case_y = position_precise[1]/50
+    tuple_case = [case_x,case_y]
+    print(tuple_case)
+    print(recup2)
+
+    #case_total = str(case_x)+ ";" +str(case_y)
+    #print("case x :" + str(case_x))
+    #print("case y :" + str(case_y))
+    #print(case_total)
     print(position_precise)
     if position_precise == recup2:
         recup2 = (750,750)
