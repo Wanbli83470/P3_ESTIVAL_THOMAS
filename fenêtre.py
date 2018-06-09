@@ -13,7 +13,7 @@ seringue_x = seringue_x * 50
 seringue_y = random.randint(0,15)
 seringue_y = seringue_y * 50
 
-
+ether2 = (254,425)
 
 position = {'a4':[0,150],
             'a8':[0,400],
@@ -429,7 +429,7 @@ seringue = pygame.image.load(image_seringue).convert_alpha()
 windows.blit(seringue, (position_seringue))
 #loading seringue
 ether = pygame.image.load(image_ether).convert_alpha()
-windows.blit(ether, (recup2))
+windows.blit(ether, (recup2,ether2))
 #loading aiguille
 aiguille = pygame.image.load(image_aiguille).convert_alpha()
 windows.blit(aiguille, (recup4))
