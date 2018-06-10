@@ -10,7 +10,8 @@ size_windows = nombre_sprite_cote * taille_sprite
 titre_fenetre = "Aider MacGyver a s'echapper"
 
 #Listes des images du jeu
-image_fond = "fond.jpg"
+wall = "mur.jpg"
+image_fond = "arrière_plan.jpg"
 image_seringue = "seringue.png"
 image_MacGyver = "MacGyver50PX.png"
 image_Gardien = "Gardien50PX.png"
@@ -20,3 +21,5 @@ image_ether= "ether.png"
 image_aiguille= "aiguille.png"
 image_win= "you_win.png"
 image_boussole = "boussole.png"
+image_ouverture = "ouverture.png"
+image_depart = "arrivee.png" 
