@@ -185,11 +185,11 @@ windows.blit(fond, (0,0))
 MacGyver = pygame.image.load(image_MacGyver).convert_alpha()
 position_perso = MacGyver.get_rect()
 windows.blit(MacGyver, position_perso)
-position_perso.y = (50)
-position_perso.x = (0)
+position_perso.x = (MG_x)
+position_perso.y = (MG_y)
 #loading Gardien
 Gardien = pygame.image.load(image_Gardien).convert_alpha()
-windows.blit(Gardien, (712,555))
+windows.blit(Gardien, (Gardien_conversion))
 #loading ether
 seringue = pygame.image.load(image_seringue).convert_alpha()
 windows.blit(seringue, (position_seringue))
@@ -391,11 +391,11 @@ while continuer == 1:
         position_over = (0,0)
         continuer = 0
 
-    if position_precise == [700,550] and counter < 3 :
+    if position_precise == Gardien_conversion and counter < 3 :
         position_over = (0,0)
         continuer = 0
 
-    if position_precise == [700,550] and counter == 3:
+    if position_precise == Gardien_conversion and counter == 3:
         position_win = (0,0)
         print("test")
 
