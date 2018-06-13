@@ -3,49 +3,49 @@ chemin = "n.txt"
 position = [350,350]
 
 ouverture = open(chemin, 'r')
-case_x = 0
-case_y = 0
+SQUARE_X = 0
+SQUARE_Y = 0
 
-case = [case_x, case_y]
+case = [SQUARE_X, SQUARE_Y]
 
-x = case_x * 50
-y = case_y * 50
+x = SQUARE_X * 50
+y = SQUARE_Y * 50
 
 xy = [x,y]
 
-position_depart = []
+LOCATION_STARTING = []
 position_arrivee = []
 coor = []
-coor_mur = []
+LOCATION_WALL = []
 
 for ligne in ouverture.read():
-	x = case_x * 50
-	y = case_y * 50
+	x = SQUARE_X * 50
+	y = SQUARE_Y * 50
 
-	case_x = case_x +1
+	SQUARE_X = SQUARE_X +1
 
-	if case_x > 15 :
-		case_x = 0
-		case_y = case_y + 1
+	if SQUARE_X > 15 :
+		SQUARE_X = 0
+		SQUARE_Y = SQUARE_Y + 1
 
-	case = [case_x, case_y]
+	case = [SQUARE_X, SQUARE_Y]
 	xy = [x,y]
 
 	if ligne == "d":
-		position_depart.append(xy)
+		LOCATION_STARTING.append(xy)
 	elif ligne == "a":
 		position_arrivee.append(xy)
 	elif ligne == "o":
 		coor.append(xy)
 	elif ligne == "m":
-		coor_mur.append(xy)
+		LOCATION_WALL.append(xy)
 
-objet_aleatoire = (choice(coor))
-objet_aleatoire2 = (choice(coor))
+RANDOM_OBJECT = (choice(coor))
+RANDOM_OBJECT2 = (choice(coor))
 RANDOM_OBJECT3 = (choice(coor))
 objet_aleatoire4 = (choice(coor))
 """RANDOM_OBJECT3"""
-MG_conversion = position_depart[0]
+MG_conversion = LOCATION_STARTING[0]
 MG_x = MG_conversion[0]
 MG_y = MG_conversion[1]
 Gardien_conversion = position_arrivee[0]
