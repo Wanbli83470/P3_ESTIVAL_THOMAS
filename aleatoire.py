@@ -31,7 +31,6 @@ for ligne in ouverture.read():
 	case = [case_x, case_y]
 	xy = [x,y]
 
-	print("x =  " + str(case_x) + "   y =  " + str(case_y))
 	if ligne == "d":
 		position_depart.append(xy)
 	elif ligne == "a":
@@ -43,14 +42,10 @@ for ligne in ouverture.read():
 
 objet_aleatoire = (choice(coor))
 objet_aleatoire2 = (choice(coor))
-objet_aleatoire3 = (choice(coor))
+RANDOM_OBJECT3 = (choice(coor))
 objet_aleatoire4 = (choice(coor))
-
-print(" la position de depart est " + str(position_depart))
+"""RANDOM_OBJECT3"""
 MG_conversion = position_depart[0]
 MG_x = MG_conversion[0]
 MG_y = MG_conversion[1]
 Gardien_conversion = position_arrivee[0]
-print(Gardien_conversion)
-print(MG_x)
-print(MG_y)
