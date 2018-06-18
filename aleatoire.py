@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+#!/usr/bin/env python
 from random import choice
 chemin = "n.txt"
 position = [350,350]

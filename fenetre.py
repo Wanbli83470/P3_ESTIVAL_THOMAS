@@ -1,4 +1,6 @@
-#-*- coding:utf-8 -*-
+#! /usr/bin/env python3
+# coding: utf-8
+
 """Modul Random for generate the position of object"""
 import random
 import pygame
@@ -101,10 +103,10 @@ while CONTINUE == 1:
                     if valeur_suivante_bas in coor:
                         LOCATION_HERO = LOCATION_HERO.move(0, 50)
 
- 
 
 
-    position_precise = (LOCATION_HERO[0:2])
+    LOCATION_HERO_LIST = list(LOCATION_HERO)
+    position_precise = LOCATION_HERO_LIST[0:2]
     position_x = position_precise[0]
     position_y = position_precise[1]
 
@@ -221,4 +223,3 @@ while CONTINUE == 1:
     windows.blit(over, (LOCATION_OVER))
     windows.blit(win, (LOCATION_WIN))
     pygame.display.flip()
-    
