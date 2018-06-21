@@ -9,76 +9,85 @@ from constantes import *
 from aleatoire import*
 
 pygame.init()
-#couleur
-#compteur
+""" init counter """
 COUNTER = 0
-#LIFE
+"""init counter of life"""
 LIFE = 4
-#Opening PyGame windows
+
+"""Opening PyGame windows"""
 windows = pygame.display.set_mode((size_windows, size_windows))
-#name windows
+
+"""name windows"""
 pygame.display.set_caption(titre_fenetre)
-#loading MacGyver
+
+"""loading MacGyver"""
 MacGyver = pygame.image.load(SCREEN_MacGyver).convert_alpha()
 LOCATION_HERO = MacGyver.get_rect()
 windows.blit(MacGyver, LOCATION_HERO)
 LOCATION_HERO.x = (MG_x)
 LOCATION_HERO.y = (MG_y)
-#loading Gardien
+
+"""loading Gardien"""
 GUARDIAN = pygame.image.load(image_Gardien).convert_alpha()
 windows.blit(GUARDIAN, (Gardien_conversion))
-#loading ether
+
+"""loading ether"""
 ether = pygame.image.load(image_ether).convert_alpha()
 windows.blit(ether, (RANDOM_OBJECT))
-#loading NEEDLE
+
+"""loading NEEDLE"""
 NEEDLE = pygame.image.load(SCREEN_NEEDLE).convert_alpha()
 windows.blit(NEEDLE, (RANDOM_OBJECT2))
-#loading COMPASS
+
+"""loading COMPASS"""
 COMPASS = pygame.image.load(SCREEN_COMPASS).convert_alpha()
 windows.blit(COMPASS, (RANDOM_OBJECT3))
-#loading Game over
+
+"""loading Game over"""
 over = pygame.image.load(image_gameover).convert_alpha()
 windows.blit(over, (0, 0))
 LOCATION_OVER = (750, 750)
-#loading WIN
+
+"""loading WIN"""
 win = pygame.image.load(SCREEN_WIN).convert_alpha()
 windows.blit(win, (0, 0))
 LOCATION_WIN = (750, 750)
-# objets ramasses
+
+"""objets ramasses"""
 font=pygame.font.Font(None, 50)
-LOCATION_TEXT=font.render("objets ramasses : " + str(COUNTER), True, (255, 255, 255))
+LOCATION_TEXT=font.render("Object stack : " + str(COUNTER), True, (255, 255, 255))
 rect_LOCATION_TEXT = LOCATION_TEXT.get_rect()
+
 """"life point COUNTER"""
 LIFE_POINT_ = pygame.font.Font(None, 50)
-LOCATION_TEXT2=font.render("SANTE : " + str(LIFE), True, (255, 255, 255))
+LOCATION_TEXT2=font.render("LIFE : " + str(LIFE), True, (255, 255, 255))
 rect_LOCATION_TEXT2 = LOCATION_TEXT2.get_rect()
 
 position_LOCATION_TEXTe = (750, 750)
 windows.blit(LOCATION_TEXT, (20, 715))
 
-#loading arrivée
+"""loading arrivée"""
 CORRIDOR = pygame.image.load(SCREEN_CORRIDOR).convert()
 windows.blit(CORRIDOR, (0, 0))
-#loading wall
+
+"""loading wall"""
 mur = pygame.image.load(wall).convert()
 windows.blit(mur, (0, 0))
-#loading case danger
+
+"""loading case danger"""
 danger = pygame.image.load(image_casedanger).convert()
 windows.blit(danger, (0, 0))
-#loading parcours
+
+"""loading parcours"""
 CORRIDOR2 = pygame.image.load(SCREEN_).convert()
 windows.blit(CORRIDOR, (0, 0))
 
 pygame.display.flip()
 
-
-
-
 CONTINUE = 1
 
 while CONTINUE == 1:
 
- 
     for event in pygame.event.get():
 
         if event.type == QUIT:
@@ -102,8 +111,6 @@ while CONTINUE == 1:
                 if position_y < 700:
                     if valeur_suivante_bas in coor:
                         LOCATION_HERO = LOCATION_HERO.move(0, 50)
-
-
 
     LOCATION_HERO_LIST = list(LOCATION_HERO)
     position_precise = LOCATION_HERO_LIST[0:2]
@@ -144,9 +151,9 @@ while CONTINUE == 1:
         x = SQUARE_X * 50
         y = SQUARE_Y * 50
 
-        SQUARE_X = SQUARE_X +1
+        SQUARE_X = SQUARE_X + 1
 
-        if SQUARE_X > 15 :
+        if SQUARE_X > 15:
             SQUARE_X = 0
             SQUARE_Y = SQUARE_Y + 1
 
@@ -171,8 +178,6 @@ while CONTINUE == 1:
             coor.append(xy)
             LOCATION_WALL.append(xy)
             windows.blit(danger, (x, y))
-
-
 
     """"test de positionnement de MacGyver par rapport aux éléments l'entourant"""
 
@@ -199,10 +204,9 @@ while CONTINUE == 1:
             LIFE -= 4
             LOCATION_TEXT2 = font.render("SANTE : " + str(LIFE), True, (255, 255, 255))
 
-    if LIFE <=0:
+    if LIFE <= 0:
         LOCATION_OVER = (0, 0)
         CONTINUE = 0
-
 
     if position_precise == Gardien_conversion and COUNTER < 3:
         LOCATION_OVER = (0, 0)
@@ -213,10 +217,9 @@ while CONTINUE == 1:
 
     """"Refresh"""
 
-
     windows.blit(LOCATION_TEXT, (20, 715))
     windows.blit(LOCATION_TEXT2, (550, 715))
-    windows.blit(MacGyver, (LOCATION_HERO))
+    windows.blit(MacGyver, LOCATION_HERO)
     windows.blit(NEEDLE, (RANDOM_OBJECT2))
     windows.blit(COMPASS, (RANDOM_OBJECT3))
     windows.blit(ether, (RANDOM_OBJECT))

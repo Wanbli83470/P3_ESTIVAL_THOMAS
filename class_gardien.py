@@ -55,12 +55,23 @@ class Grille(object):
 		self.fichier = "n.txt"
 		self.open = open(self.fichier, 'r')
 		self.wall = []
-		self.x = 0
+		self.case_x = 0
+		self.case_y = 0
+		self.x = self.case_x*50
+		self.y = self.case_y *50
 		for line in self.open.read():
+			self.case_x = self.case_x + 1
+			if self.case_x > 15 :
+				self.case_x = 0
+				self.case_y = self.case_y + 1
 			if line == "m":
-				self.x = self.x + 1
-				self.wall.append(self.x)
+				"""self.x = self.x + 1"""
+				self.wall.append(self.case_x)
+			if line == "d":	
 
+			if line == "a":
+
+			if line == "o":
 
 	def Random(self) :
 		self.RANDOM_OBJECT = []
