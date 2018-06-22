@@ -15,24 +15,24 @@ COUNTER = 0
 LIFE = 4
 
 """Opening PyGame windows"""
-windows = pygame.display.set_mode((size_windows, size_windows))
+windows = pygame.display.set_mode((SIZE_WINDOWS, SIZE_WINDOWS))
 
 """name windows"""
-pygame.display.set_caption(titre_fenetre)
+pygame.display.set_caption(TITLE_WINDOWS)
 
 """loading MacGyver"""
-MacGyver = pygame.image.load(SCREEN_MacGyver).convert_alpha()
+MacGyver = pygame.image.load(SCREEN_MACGYVER).convert_alpha()
 LOCATION_HERO = MacGyver.get_rect()
 windows.blit(MacGyver, LOCATION_HERO)
 LOCATION_HERO.x = (MG_x)
 LOCATION_HERO.y = (MG_y)
 
 """loading Gardien"""
-GUARDIAN = pygame.image.load(image_Gardien).convert_alpha()
+GUARDIAN = pygame.image.load(SCREEN_GARDUIAN).convert_alpha()
 windows.blit(GUARDIAN, (Gardien_conversion))
 
 """loading ether"""
-ether = pygame.image.load(image_ether).convert_alpha()
+ether = pygame.image.load(SCREEN_ETHER).convert_alpha()
 windows.blit(ether, (RANDOM_OBJECT))
 
 """loading NEEDLE"""
@@ -44,7 +44,7 @@ COMPASS = pygame.image.load(SCREEN_COMPASS).convert_alpha()
 windows.blit(COMPASS, (RANDOM_OBJECT3))
 
 """loading Game over"""
-over = pygame.image.load(image_gameover).convert_alpha()
+over = pygame.image.load(SCREEN_GAMEOVER).convert_alpha()
 windows.blit(over, (0, 0))
 LOCATION_OVER = (750, 750)
 
@@ -71,15 +71,15 @@ CORRIDOR = pygame.image.load(SCREEN_CORRIDOR).convert()
 windows.blit(CORRIDOR, (0, 0))
 
 """loading wall"""
-mur = pygame.image.load(wall).convert()
+mur = pygame.image.load(WALL).convert()
 windows.blit(mur, (0, 0))
 
-"""loading case danger"""
-danger = pygame.image.load(image_casedanger).convert()
+"""loading DANGEROUS SPRITE"""
+danger = pygame.image.load(SCREEN_DANGEROUS).convert()
 windows.blit(danger, (0, 0))
 
 """loading parcours"""
-CORRIDOR2 = pygame.image.load(SCREEN_).convert()
+CORRIDOR2 = pygame.image.load(SCREEN_ARRIVAL).convert()
 windows.blit(CORRIDOR, (0, 0))
 
 pygame.display.flip()
@@ -179,30 +179,30 @@ while CONTINUE == 1:
             LOCATION_WALL.append(xy)
             windows.blit(danger, (x, y))
 
-    """"test de positionnement de MacGyver par rapport aux éléments l'entourant"""
+    """"condition and position for victory"""
 
     if position_precise == RANDOM_OBJECT:
         RANDOM_OBJECT = (750, 750)
         COUNTER += 1
-        LOCATION_TEXT = font.render("objets ramasses : " + str(COUNTER), True, (255, 255, 255))
+        LOCATION_TEXT = font.render("Object stack : " + str(COUNTER), True, (255, 255, 255))
         rect_LOCATION_TEXT = LOCATION_TEXT.get_rect()
 
     elif position_precise == RANDOM_OBJECT2:
         RANDOM_OBJECT2 = (750, 750)
         COUNTER += 1
-        LOCATION_TEXT = font.render("objets ramasses : " + str(COUNTER), True, (255, 255, 255))
+        LOCATION_TEXT = font.render("Object stack : " + str(COUNTER), True, (255, 255, 255))
         rect_LOCATION_TEXT = LOCATION_TEXT.get_rect()
 
     elif position_precise == RANDOM_OBJECT3:
         RANDOM_OBJECT3 = (750, 750)
         COUNTER += 1
-        LOCATION_TEXT = font.render("objets ramasses : " + str(COUNTER), True, (255, 255, 255))
+        LOCATION_TEXT = font.render("Object stack : " + str(COUNTER), True, (255, 255, 255))
         rect_LOCATION_TEXT = LOCATION_TEXT.get_rect()
 
     if position_precise in LOCATION_WALL:
         if LIFE > 0:
             LIFE -= 4
-            LOCATION_TEXT2 = font.render("SANTE : " + str(LIFE), True, (255, 255, 255))
+            LOCATION_TEXT2 = font.render("LIFE : " + str(LIFE), True, (255, 255, 255))
 
     if LIFE <= 0:
         LOCATION_OVER = (0, 0)
