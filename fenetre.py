@@ -12,7 +12,7 @@ pygame.init()
 """ init counter """
 COUNTER = 0
 """init counter of life"""
-LIFE = 4
+LIFE = 1
 
 """Opening PyGame windows"""
 windows = pygame.display.set_mode((SIZE_WINDOWS, SIZE_WINDOWS))
@@ -63,7 +63,6 @@ LIFE_POINT_ = pygame.font.Font(None, 50)
 LOCATION_TEXT2=font.render("LIFE : " + str(LIFE), True, (255, 255, 255))
 rect_LOCATION_TEXT2 = LOCATION_TEXT2.get_rect()
 
-position_LOCATION_TEXTe = (750, 750)
 windows.blit(LOCATION_TEXT, (20, 715))
 
 """loading arrivée"""
@@ -207,6 +206,9 @@ while CONTINUE == 1:
     if LIFE <= 0:
         LOCATION_OVER = (0, 0)
         CONTINUE = 0
+
+    if COUNTER == 3:
+        MacGyver = pygame.image.load(SCREEN_MACGYVER_OBJECT).convert_alpha()
 
     if position_precise == Gardien_conversion and COUNTER < 3:
         LOCATION_OVER = (0, 0)

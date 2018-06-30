@@ -1,5 +1,4 @@
 #! /usr/bin/env python3
-#!/usr/bin/env python
 from random import choice
 chemin = "n.txt"
 position = [350,350]
@@ -7,8 +6,6 @@ position = [350,350]
 ouverture = open(chemin, 'r')
 SQUARE_X = 0
 SQUARE_Y = 0
-
-case = [SQUARE_X, SQUARE_Y]
 
 x = SQUARE_X * 50
 y = SQUARE_Y * 50
@@ -30,7 +27,6 @@ for ligne in ouverture.read():
 		SQUARE_X = 0
 		SQUARE_Y = SQUARE_Y + 1
 
-	case = [SQUARE_X, SQUARE_Y]
 	xy = [x,y]
 
 	if ligne == "d":
@@ -51,3 +47,4 @@ MG_conversion = LOCATION_STARTING[0]
 MG_x = MG_conversion[0]
 MG_y = MG_conversion[1]
 Gardien_conversion = position_arrivee[0]
+print(RANDOM_OBJECT)
