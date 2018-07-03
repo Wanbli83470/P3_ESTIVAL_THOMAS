@@ -5,8 +5,6 @@ from constantes import *
 from random import choice
 windows = pygame.display.set_mode((SIZE_WINDOWS, SIZE_WINDOWS))
 
-
-
 class MacGyver:
 	def __init__(self,LOCATION_HERO=0):
 		self.LOCATION_HERO = LOCATION_HERO
@@ -24,19 +22,14 @@ class MacGyver:
 	def move(self,direction):
 		if direction == 'droite':
 			self.LOCATION_HERO = self.LOCATION_HERO.move(+50, 0)
-			
 		if direction == 'gauche':
 			self.LOCATION_HERO = self.LOCATION_HERO.move(-50, 0)
-			
 		if direction == 'haut':
 			self.LOCATION_HERO = self.LOCATION_HERO.move(0,-50)
-
 		if direction == 'bas':
 			self.LOCATION_HERO = self.LOCATION_HERO.move(0, +50)
 		
 class Grille:
-
-
 
 	def parcours(self):
 		mur = pygame.image.load(WALL).convert()
@@ -67,9 +60,10 @@ class Grille:
 		xy = [x,y]
 
 		LOCATION_STARTING = []
-		self.position_arrivee = int
+		self.LOCATION_ARRIVAL = int
 		self.coor = []
 		self.LOCATION_WALL = []
+		self.LOCATION_DANGEROUS = []
 
 		for ligne in ouverture.read():
 			x = SQUARE_X * 50
@@ -87,7 +81,8 @@ class Grille:
 				LOCATION_STARTING.append(xy)
 				windows.blit(CORRIDOR, (x, y))
 			elif ligne == "a":
-				self.position_arrivee = (xy)
+				self.LOCATION_ARRIVAL = (xy)
+				self.coor.append(xy)
 				windows.blit(CORRIDOR, (x, y))
 				windows.blit(GUARDIAN, (x, y))
 			elif ligne == "o":
@@ -97,8 +92,7 @@ class Grille:
 				self.LOCATION_WALL.append(xy)
 				windows.blit(mur, (x, y))
 			elif ligne == "c":
-				self.coor.append(xy)
-				self.LOCATION_WALL.append(xy)
+				self.LOCATION_DANGEROUS.append(xy)
 				windows.blit(danger, (x, y))
 				
 

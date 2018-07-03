@@ -15,7 +15,6 @@ TITLE_WINDOWS = "Help MacGyver to escape"
 
 WALL = "picture/mur.jpg"
 SCREEN_MACGYVER = "picture/MacGyver50PX.png"
-SCREEN_MACGYVER_OBJECT = "picture/MacGyver50PX_OBJECT.png"
 SCREEN_GARDUIAN = "picture/Gardien50PX.png"
 SCREEN_GAMEOVER = "picture/game_over.png"
 SCREEN_DANGEROUS = "picture/case_danger.png"

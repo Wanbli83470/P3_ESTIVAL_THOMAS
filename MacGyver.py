@@ -24,7 +24,20 @@ LOCATION_HERO = MG.LOCATION_HERO[0:2]
 LOCATION_HERO_X = LOCATION_HERO[0]
 LOCATION_HERO_Y = LOCATION_HERO[1]
 
-"""grille du jeu"""
+"""collision management"""
+"""LOCATION_HERO FOR MOVE"""
+RIGHT = (LOCATION_HERO[0]+50)
+LEFT = (LOCATION_HERO[0]-50)
+UP = (LOCATION_HERO[1]-50)
+DOWN = (LOCATION_HERO[1]+50)
+
+MOVE_LOCATION_HERO_DROITE = [RIGHT,LOCATION_HERO_Y]
+MOVE_LOCATION_HERO_GAUCHE = [LEFT,LOCATION_HERO_Y]
+MOVE_LOCATION_HERO_HAUT = [LOCATION_HERO_X,UP]
+MOVE_LOCATION_HERO_BAS = [LOCATION_HERO_X,DOWN]
+print(MOVE_LOCATION_HERO_BAS)
+
+"""game grid"""
 GRILLE = Grille()
 GRILLE.parcours()
 GRILLE.Random()
@@ -36,9 +49,9 @@ RANDOM_OBJECT2 = GRILLE.Random()
 RANDOM_OBJECT3 = GRILLE.Random()
 
 LOCATION_COULOIR = GRILLE.coor
-LOCATION_GUARDIAN = GRILLE.position_arrivee
-print(LOCATION_COULOIR)
-print(LOCATION_GUARDIAN)
+LOCATION_GUARDIAN = GRILLE.LOCATION_ARRIVAL
+LOCATION_DANGEROUS = GRILLE.LOCATION_DANGEROUS
+LOCATION_WALL = GRILLE.LOCATION_WALL
 
 """object1"""
 object1 = ElementGrille()
@@ -68,7 +81,7 @@ win = pygame.image.load(SCREEN_WIN).convert_alpha()
 windows.blit(win, (0, 0))
 LOCATION_WIN = (750, 750)
 
-"""objets ramasses"""
+"""objects picked up"""
 font=pygame.font.Font(None, 50)
 LOCATION_TEXT=font.render("Object stack : " + str(COUNTER), True, (255, 255, 255))
 rect_LOCATION_TEXT = LOCATION_TEXT.get_rect()
@@ -93,19 +106,22 @@ while CONTINUE == 0:
 
         if event.type == KEYDOWN:
 
-			if event.key == K_RIGHT:
-				if LOCATION_HERO_X < 700:
-					MG.move('droite')
-			elif event.key == K_LEFT:
-				if LOCATION_HERO_X > 0:
-					MG.move('gauche')
-			elif event.key == K_UP:
-				if LOCATION_HERO_Y > 0:
-					MG.move('haut')
-			elif event.key == K_DOWN:
-				if LOCATION_HERO_Y < 700:
-					MG.move('bas')
-
+            if event.key == K_RIGHT:
+                if LOCATION_HERO_X < 700:
+                    if MOVE_LOCATION_HERO_DROITE not in LOCATION_WALL:
+                       MG.move('droite')
+            elif event.key == K_LEFT:
+                if LOCATION_HERO_X > 0:
+                    if MOVE_LOCATION_HERO_GAUCHE not in LOCATION_WALL:
+                        MG.move('gauche')
+            elif event.key == K_UP:
+                if LOCATION_HERO_Y > 0:
+                    if MOVE_LOCATION_HERO_HAUT not in LOCATION_WALL:
+                        MG.move('haut')
+            elif event.key == K_DOWN:
+                if LOCATION_HERO_Y < 700:
+                    if MOVE_LOCATION_HERO_BAS not in LOCATION_WALL:
+                        MG.move('bas')
 
 	"""LOCATION_HERO FOR MOVE"""
 	LOCATION_HERO = MG.LOCATION_HERO[0:2]
@@ -113,11 +129,15 @@ while CONTINUE == 0:
 	LOCATION_HERO_X = LOCATION_HERO[0]
 	LOCATION_HERO_Y = LOCATION_HERO[1]
 	"""LOCATION FOR MOVE"""
-	LOCATION_HERO_X50 = (LOCATION_HERO[0]+50)
-	MOVE_LOCATION_HERO_X50 = LOCATION_HERO_X50,LOCATION_HERO_Y
-	LOCATION_HERO_Y50 = (LOCATION_HERO[1]+50)
-	LOCATION_HERO_X_50 = (LOCATION_HERO[0]-50)
-	LOCATION_HERO_Y_50 = (LOCATION_HERO[1]-50)
+    RIGHT = (LOCATION_HERO[0]+50)
+    LEFT = (LOCATION_HERO[0]-50)
+    UP = (LOCATION_HERO[1]-50)
+    DOWN = (LOCATION_HERO[1]+50)
+
+    MOVE_LOCATION_HERO_DROITE = [RIGHT,LOCATION_HERO_Y]
+    MOVE_LOCATION_HERO_GAUCHE = [LEFT,LOCATION_HERO_Y]
+    MOVE_LOCATION_HERO_HAUT = [LOCATION_HERO_X,UP]
+    MOVE_LOCATION_HERO_BAS = [LOCATION_HERO_X,DOWN]
 
     """"condition and position for victory"""
 
@@ -139,6 +159,8 @@ while CONTINUE == 0:
 		LOCATION_TEXT = font.render("Object stack : " + str(COUNTER), True, (255, 255, 255))
 		rect_LOCATION_TEXT = LOCATION_TEXT.get_rect()
 
+    elif LOCATION_HERO in LOCATION_DANGEROUS:
+        LIFE = 0
 
     """TEST FOR LIFE"""
     if LIFE <= 0:
@@ -151,7 +173,6 @@ while CONTINUE == 0:
     if LOCATION_HERO == LOCATION_GUARDIAN and COUNTER < 3:
         LOCATION_OVER = (0, 0)
         CONTINUE = 1
-
 
     MG.affiche()
     GRILLE.parcours()
@@ -166,4 +187,5 @@ while CONTINUE == 0:
     windows.blit(win, (LOCATION_WIN))
     windows.blit(LOCATION_TEXT, (20, 715))
     windows.blit(LOCATION_TEXT2, (550, 715))
+    
     pygame.display.flip()
